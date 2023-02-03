@@ -1,0 +1,7 @@
+{
+  "database": "database",
+  "user": "widtuser",
+  "password": "pass123",
+  "host": "dbcontainer",
+  "port": 3306
+}

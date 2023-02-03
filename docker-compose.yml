@@ -1,0 +1,51 @@
+version: "3.9"
+services:
+  frontend:
+    image: node:19.1.0-alpine
+    working_dir: /app
+    command: sh -c "yarn install && yarn run dockerdev"
+    ports:
+      - "4444:4444"
+      - "24678:24678"
+    volumes: 
+      - type: bind
+        source: "."
+        target: /app
+  backend:
+    image: node:19.1.0-alpine
+    working_dir: /app
+    command: sh -c "yarn install && yarn run dev"
+    networks: 
+      - widt-backend
+    ports:
+      - "4445:4445"
+    volumes: 
+      - type: bind
+        source: ./api/
+        target: /app
+  db:
+    image: mariadb
+    restart: on-failure
+    container_name: dbcontainer
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: database
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    networks: 
+      - widt-backend
+    volumes: 
+      - ${PWD}/mariadb:/var/lib/mysql
+    ports:
+      - 3306:3306
+  adminer:
+    image: adminer
+    restart: always
+    ports: 
+      - 4446:8080
+    networks:
+      - widt-backend
+
+networks:
+  widt-backend:
+    driver: bridge

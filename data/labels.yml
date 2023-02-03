@@ -1,0 +1,29 @@
+negatief: 
+  title: "Negatieve labels:"
+  options:
+    - beledigend/pestend: Geen beschrijving
+    - spam: Geen beschrijving
+    - trol: Geen beschrijving
+positief:
+  title: "Positieve labels:"
+  options:
+    - persoonlijk: Geen beschrijving
+    - grappig: Geen beschrijving
+    - nieuwsgierig: Geen beschrijving
+    - constructief: Geen beschrijving
+inhoudelijk:
+  title: "Inhoudelijke labels:"
+  options: 
+    - wetenschappelijk: Geen beschrijving
+    - alternatief perspectief: Geen beschrijving
+    - complottheorie: Geen beschrijving
+    - misleidend: Geen beschrijving
+    - ongefundeerd: Geen beschrijving
+    - off-topic: Geen beschrijving
+    - onduidelijk: Geen beschrijving
+vormelijk:
+  title: "Vormelijke labels:"
+  options: 
+    - slordige spelling: Geen beschrijving
+    - goed geformuleerd: Geen beschrijving
+    - poëtisch: Geen beschrijving
