@@ -10,10 +10,10 @@ const { DataTypes } = Sequelize;
 
 const sequelize = new Sequelize({
   database: connection.database,
-  username: connection.user,
+  username: process.env.MYSQL_USER,
   host: connection.host,
   port: connection.port,
-  password: connection.password,
+  password: process.env.MYSQL_PASSWORD,
   dialect: 'mariadb'
 });
 

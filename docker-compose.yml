@@ -19,6 +19,9 @@ services:
       - widt-backend
     ports:
       - "4445:4445"
+    environment:
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes: 
       - type: bind
         source: ./api/
