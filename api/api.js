@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const bodyParser = require('body-parser');
+const exec = require('child_process').exec;
 const port = 4445
 
 const Sequelize = require('sequelize');
@@ -27,6 +28,22 @@ const LABEL = sequelize.define('label', {
 
 LABEL.sync().catch(err => {
   console.log('cannot create labels table')
+})
+
+app.all('/pull', async (req, res, next) => {
+  const command = "git pull"
+  var child = exec(command, { cwd: "./../" })
+  const alldata = []
+  child.stdout.on('data', function (data) {
+    alldata.push(data)
+  })
+  child.stderr.on('data', function(data) {
+    alldata.push('stderr: ' + data);
+  });
+  child.on('close', function (code) {
+    res.send({alldata})
+  })
+  
 })
 
 app.all('*', async (req, res, next) => {
