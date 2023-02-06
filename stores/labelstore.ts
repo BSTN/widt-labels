@@ -39,7 +39,7 @@ export const useLabelStore = defineStore('labelstore', {
         userid: this.userid,
       }
       const alldata = cloneDeep(data)
-      const result = await $fetch("http://localhost:4445/", {
+      const result = await $fetch(window.location.host.match(/localhost/) ? "http://localhost:4445/" : "/api", {
         method: "PUT",
         body: alldata,
       }).catch(err => {
