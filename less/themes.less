@@ -7,9 +7,41 @@
 }
 
 :root {
-  --bg: #313538;
-  --bg1: #27292b;
-  --bg2: #212325;
+  --bg: #2a333a;
+  --bg1: #272b30;
+  --bg2: #1c2024;
   --fg: #d2d2c6;
-  --fg2: #8b8b7d;
+  --fg2: #a3a3a3;
+}
+
+@s1: 38%;
+@l1: 25%;
+@s2: 21%;
+@l2: 36%;
+
+.negatief {
+  --bbg: hsl(10, @s1, @l1);
+  --bbgh: #901502;
+  --bbgh: hsl(8, @s2, @l2);
+}
+.positief {
+  --bbg: hsl(39, @s1, @l1);
+  --bbgh: #a98400;
+  --bbgh: hsl(48, @s2, @l2);
+}
+.inhoudelijk {
+  --bbg: hsl(215, @s1, @l1);
+  --bbgh: #315570;
+  --bbgh: hsl(207, @s2, @l2);
+}
+.vormelijk {
+  --bbg: #27131c;
+  --bbgh: #66233a;
+  --bbg: hsl(78, @s1, @l1);
+  --bbgh: #4e6a37;
+  --bbgh: hsl(94, @s2, @l2);
+}
+.suggesties {
+  --bbg: #5f5f5f;
+  --bbgh: #21667f;
 }

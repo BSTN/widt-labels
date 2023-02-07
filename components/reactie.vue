@@ -53,13 +53,16 @@
       <label v-if="store.customlabels.length < 3"
         >Suggereer een nieuw label:</label
       >
-      <input
-        v-if="store.customlabels.length < 3"
-        type="text"
-        maxlength="30"
-        v-model="newlabel"
-        @keydown.enter="addNewlabel()"
-      />
+      <div class="newlabelframe">
+        <input
+          v-if="store.customlabels.length < 3"
+          type="text"
+          maxlength="30"
+          v-model="newlabel"
+          @keydown.enter="addNewlabel()"
+        />
+        <button @click="addNewlabel()">ok</button>
+      </div>
     </div>
     <div class="control">
       <!-- <button @click="store.prev()">vorige</button> -->
@@ -115,8 +118,10 @@ function removeCustomLabel(label) {
   store.customlabels.splice(store.customlabels.indexOf(label), 1);
 }
 function addNewlabel() {
-  store.customlabels.push(newlabel.value);
-  newlabel.value = "";
+  if (newlabel.value.length > 0) {
+    store.customlabels.push(newlabel.value);
+    newlabel.value = "";
+  }
 }
 watch(watchPosition, (val) => {
   setTimeout(() => {
@@ -327,10 +332,23 @@ button.selection {
     padding: 0;
     margin-bottom: 1.5em;
   }
+  .newlabelframe {
+    width: 16rem;
+    max-width: 100%;
+    margin: 0 auto;
+    button {
+      font-size: 0.8rem;
+      padding: 0.75em;
+      border: 0.125em solid var(--bg);
+      background: var(--bg);
+      border-radius: 0 0.5em 0.5em 0;
+    }
+  }
   input {
     width: 12rem;
     font-size: 0.8rem;
     border: 0.125em solid var(--bg);
+    border-radius: 0.5em 0 0 0.5em;
   }
 }
 
@@ -353,37 +371,5 @@ button.selection {
   span {
     margin: 0 1em;
   }
-}
-
-@s1: 38%;
-@l1: 25%;
-@s2: 21%;
-@l2: 36%;
-
-.negatief {
-  --bbg: hsl(10, @s1, @l1);
-  --bbgh: #901502;
-  --bbgh: hsl(8, @s2, @l2);
-}
-.positief {
-  --bbg: hsl(39, @s1, @l1);
-  --bbgh: #a98400;
-  --bbgh: hsl(48, @s2, @l2);
-}
-.inhoudelijk {
-  --bbg: hsl(215, @s1, @l1);
-  --bbgh: #315570;
-  --bbgh: hsl(207, @s2, @l2);
-}
-.vormelijk {
-  --bbg: #27131c;
-  --bbgh: #66233a;
-  --bbg: hsl(78, @s1, @l1);
-  --bbgh: #4e6a37;
-  --bbgh: hsl(94, @s2, @l2);
-}
-.suggesties {
-  --bbg: #5f5f5f;
-  --bbgh: #21667f;
 }
 </style>
