@@ -58,7 +58,7 @@ button {
   position: fixed;
   top: 0;
   right: 0;
-  background: var(--fg);
+  background: var(--fg2);
   color: var(--bg);
   border-radius: 1em;
   padding: 0;
@@ -67,6 +67,12 @@ button {
   z-index: 9;
   line-height: 1.5em;
   margin: 0.5em;
+  &:hover {
+    background:var(--fg);
+  }
+  @media (min-width: 800px) {
+    margin: 1.5rem 2rem;
+  }
 }
 .helpframe {
   position: fixed;

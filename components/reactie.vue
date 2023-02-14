@@ -6,14 +6,16 @@
       </div>
     </div>
     <!-- main -->
-    <div class="head" @click="test()">
-      <!-- <div class="position">
-        <span>{{ store.position + 1 }} / {{ store.length + 1 }}</span>
-      </div> -->
-      <h1>Welk(e) label(s) vind jij het beste bij deze reactie passen?</h1>
+    <div class="article">
+      <div class="textframe">
+        <div class='html' v-html="html"></div>
+      </div>
     </div>
     <div class="reactieframe">
       <div class="text">{{ store.current }}</div>
+    </div>
+    <div class="head" @click="test()">
+      <h1>Welk(e) label(s) vind jij het beste bij deze reactie passen?</h1>
     </div>
     <!-- buttons -->
     <div class="buttons">
@@ -27,6 +29,9 @@
           @click="toggleOption(option)"
         >
           {{ Object.keys(option)[0] }}
+          <div class="description">
+            {{Object.values(option)[0]}}
+          </div>
         </button>
       </div>
     </div>
@@ -51,7 +56,7 @@
         </button>
       </div>
       <label v-if="store.customlabels.length < 3"
-        >Suggereer een nieuw label:</label
+        >En/of suggereer een nieuw label:</label
       >
       <div class="newlabelframe">
         <input
@@ -74,6 +79,7 @@
 import { onKeyStroke } from "@vueuse/core";
 import labels from "@/data/labels.yml";
 import { storeToRefs } from "pinia";
+import {html} from '@/data/article.md'
 
 const store = useLabelStore();
 // const selected = ref([]);
@@ -143,8 +149,24 @@ watch(watchPosition, (val) => {
   max-width: 100%;
   > * {
     flex: 1;
-    border-top: 1px solid var(--bg);
+    // border-top: 1px solid var(--bg);
     padding: 2rem 0;
+  }
+}
+.article {
+  border: 0;
+  .textframe {
+    margin: 0rem auto;
+    width: 42rem;
+    max-width: calc(100% - 1rem);
+    color: var(--fg2);
+    :deep(h1) {
+      color: var(--fg);
+      text-align: center;
+      width: 30rem;
+      margin: 0 auto 1.5rem;
+      max-width: 100%;
+    }
   }
 }
 .overlay {
@@ -201,10 +223,13 @@ watch(watchPosition, (val) => {
   // font-size: 1.25rem;
   line-height: 1.4em;
   margin-bottom: 1em;
-  padding-bottom: 3rem;
-  padding-top: 3rem;
+  padding: 2rem;
+  background: var(--fg);
+  color: var(--bg);
+  border-radius: .5em;
+  position: relative;
   @media (max-width: 40rem) {
-    padding: 1rem 0;
+    padding: 1rem;
   }
   // border-radius: 1rem;
   // max-width: 30em;
@@ -212,6 +237,16 @@ watch(watchPosition, (val) => {
   // font-size: 1.25rem;
   @media (min-width: 60rem) {
     font-size: 1.25rem;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    height: .5rem;
+    width: .5rem;
+    background: var(--fg);
+    left: 2rem;
+    clip-path: polygon(30% 0%, 30% 0%, 100% 100%, 0% 100%);
   }
   .text {
     width: 34em;
@@ -266,10 +301,35 @@ button.selection {
   width: 100%;
   position: relative;
   padding: 0.75em 1em;
+  div {
+    position:absolute;
+    bottom: calc(100% + 0.5rem);
+    background: var(--bg1);
+    color: var(--fg);
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    left: 0;
+    box-shadow: 0 0 3px rgba(#000, 0.5);
+    &:before {
+      content: "";
+      position:absolute;
+      top: 100%;
+      height: 0.5rem;
+      width: 0.5rem;
+      background: var(--bg);
+      clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
+    }
+  }
   &:hover {
     color: var(--fg);
     // background: var(--bbgh);
     border-color: var(--bbgh);
+    div {
+      opacity: 1;
+    }
   }
   &.active {
     color: var(--fg);
@@ -285,7 +345,6 @@ button.selection {
 }
 
 .suggestion {
-  border-top: 1px solid var(--bg);
   text-align: center;
   .groep {
     margin-bottom: 1em;
@@ -355,7 +414,6 @@ button.selection {
 .control {
   text-align: center;
   padding: 2rem 0;
-  border-top: 1px solid var(--bg);
   button {
     background: var(--fg2);
     color: var(--bg);
