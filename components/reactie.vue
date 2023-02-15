@@ -327,7 +327,8 @@ button.selection {
     text-align: left;
     opacity: 0;
     pointer-events: none;
-    left: 0;
+    left: 0.5rem;
+    width: 100%;
     box-shadow: 0 0 3px rgba(#000, 0.5);
     &:before {
       content: "";
@@ -337,6 +338,7 @@ button.selection {
       width: 0.5rem;
       background: var(--bg);
       clip-path: polygon(0% 0%, 100% 0%, 0% 100%, 0% 100%);
+      box-shadow: 0 0 3px rgba(#000, 0.5);
     }
   }
   &:hover {
