@@ -4,13 +4,15 @@ negatief:
     - beledigend/pestend: Dit betreft bijvoorbeeld racistische, sexistische opmerkingen.
     - spam: Promotie van een niet gerelateerd product of dienst.
     - trol: Giftige opmerkingen van iemand die bewust probeert te stoken en/of te ontregelen.
+    - boos: Algemene uiting van ontevredenheid.
 positief:
   title: "Positieve labels:"
   options:
     - persoonlijk: Een persoonlijke anecdote of perspectief.
-    - grappig: Een (poging) tot een humorvolle bijdrage.
+    - grappig (bedoeld): Een (poging) tot een humorvolle bijdrage.
     - nieuwsgierig: Het stellen van een gerelateerde vraag.
     - constructief: Inhoudelijk bijdrage aan de discussie en/of het onderwerp.
+    - oplossingsgericht: Een reactie met het oog om bij te dragen aan 
 inhoudelijk:
   title: "Inhoudelijke labels:"
   options: 
@@ -24,6 +26,6 @@ inhoudelijk:
 vormelijk:
   title: "Vormelijke labels:"
   options: 
-    - slordige spelling: SpreEkd vor zig ;-)
+    - slordig geformuleerd: SpreEkd vor zig ;-)
     - goed geformuleerd: Heldere zinnen en toegankelijk woordgebruik.
     - poëtisch: Interessant geformuleerde zinnen en/of inspirerend woordgebruik.

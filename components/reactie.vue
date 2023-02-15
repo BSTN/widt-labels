@@ -8,14 +8,20 @@
     <!-- main -->
     <div class="article">
       <div class="textframe">
-        <div class='html' v-html="html"></div>
+        <div class="html" v-html="html"></div>
       </div>
     </div>
     <div class="reactieframe">
       <div class="text">{{ store.current }}</div>
     </div>
     <div class="head" @click="test()">
-      <h1>Welk(e) label(s) vind jij het beste bij deze reactie passen?</h1>
+      <h1>
+        Welk(e) label(s) vind jij het beste bij deze reactie passen? <br />
+        <span
+          >Kies alleen de labels die je er goed bij vindt passen en laat de
+          andere labels ongemarkeerd.</span
+        >
+      </h1>
     </div>
     <!-- buttons -->
     <div class="buttons">
@@ -30,7 +36,7 @@
         >
           {{ Object.keys(option)[0] }}
           <div class="description">
-            {{Object.values(option)[0]}}
+            {{ Object.values(option)[0] }}
           </div>
         </button>
       </div>
@@ -79,7 +85,7 @@
 import { onKeyStroke } from "@vueuse/core";
 import labels from "@/data/labels.yml";
 import { storeToRefs } from "pinia";
-import {html} from '@/data/article.md'
+import { html } from "@/data/article.md";
 
 const store = useLabelStore();
 // const selected = ref([]);
@@ -203,6 +209,16 @@ watch(watchPosition, (val) => {
     color: var(--fg2);
     font-size: 1rem;
     display: inline;
+    span {
+      font-size: 0.8rem;
+      color: var(--fg2);
+      opacity: 0.5;
+      display: block;
+      width: 24em;
+      max-width: 100%;
+      margin: 1em auto 0;
+      line-height: 1.2em;
+    }
   }
   .position {
     float: right;
@@ -226,7 +242,7 @@ watch(watchPosition, (val) => {
   padding: 2rem;
   background: var(--fg);
   color: var(--bg);
-  border-radius: .5em;
+  border-radius: 0.5em;
   position: relative;
   @media (max-width: 40rem) {
     padding: 1rem;
@@ -242,8 +258,8 @@ watch(watchPosition, (val) => {
     content: "";
     position: absolute;
     bottom: 100%;
-    height: .5rem;
-    width: .5rem;
+    height: 0.5rem;
+    width: 0.5rem;
     background: var(--fg);
     left: 2rem;
     clip-path: polygon(30% 0%, 30% 0%, 100% 100%, 0% 100%);
@@ -302,7 +318,7 @@ button.selection {
   position: relative;
   padding: 0.75em 1em;
   div {
-    position:absolute;
+    position: absolute;
     bottom: calc(100% + 0.5rem);
     background: var(--bg1);
     color: var(--fg);
@@ -315,7 +331,7 @@ button.selection {
     box-shadow: 0 0 3px rgba(#000, 0.5);
     &:before {
       content: "";
-      position:absolute;
+      position: absolute;
       top: 100%;
       height: 0.5rem;
       width: 0.5rem;
@@ -395,16 +411,23 @@ button.selection {
     width: 16rem;
     max-width: 100%;
     margin: 0 auto;
+    display: flex;
+    > * {
+      flex: 1;
+    }
     button {
       font-size: 0.8rem;
       padding: 0.75em;
       border: 0.125em solid var(--bg);
       background: var(--bg);
       border-radius: 0 0.5em 0.5em 0;
+      margin: 0;
+      flex-shrink: 0;
+      flex-grow: 0;
     }
   }
   input {
-    width: 12rem;
+    max-width: 12rem;
     font-size: 0.8rem;
     border: 0.125em solid var(--bg);
     border-radius: 0.5em 0 0 0.5em;
