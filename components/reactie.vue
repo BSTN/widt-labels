@@ -185,6 +185,9 @@ button.showarticle {
   &.visible {
     display: block;
   }
+  @media (min-width: 800px) {
+    display: none;
+  }
 }
 .article {
   border: 0;
