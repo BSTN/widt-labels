@@ -16,7 +16,7 @@ positief:
 inhoudelijk:
   title: "Inhoudelijke labels:"
   options: 
-    - wetenschappelijk: Goed onderbouwde argumentatie met directe links en/of referenties naar 'peer reviewed' publicaties.
+    - goed onderbouwd: Heldere argumentatie met traceerbare referenties naar ander onderzoek.
     - alternatief perspectief: Een nieuwe of frisse blik op het onderwerp.
     - complottheorie: Verwijzend naar samenzweringstheorieën.
     - misleidend: Misinformatie en andere bewust scheve weergaves van de werkelijkheid.
@@ -26,6 +26,6 @@ inhoudelijk:
 vormelijk:
   title: "Vormelijke labels:"
   options: 
-    - slordig geformuleerd: SpreEkd vor zig ;-)
-    - goed geformuleerd: Heldere zinnen en toegankelijk woordgebruik.
+    - erg slordig geformuleerd: SpreEkd vor zig ;-)
+    - erg goed geformuleerd: Heldere zinnen en toegankelijk woordgebruik.
     - poëtisch: Inspirerend taalgebruik.

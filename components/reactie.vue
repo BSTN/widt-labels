@@ -6,7 +6,18 @@
       </div>
     </div>
     <!-- main -->
-    <div class="article">
+    <button
+      class="showarticle"
+      @click="showarticle = true"
+      :class="{ visible: !showarticle }"
+    >
+      (Klik hier om het artikel nog eens te lezen.)
+    </button>
+    <div
+      class="article"
+      :class="{ visible: showarticle }"
+      @click="showarticle = false"
+    >
       <div class="textframe">
         <div class="html" v-html="html"></div>
       </div>
@@ -17,10 +28,12 @@
     <div class="head" @click="test()">
       <h1>
         Welk(e) label(s) vind jij het beste bij deze reactie passen? <br />
-        <span
-          >Kies alleen de labels die je er goed bij vindt passen en laat de
-          andere labels ongemarkeerd.</span
-        >
+        <span>
+          Kies alleen de labels die je er goed bij vindt passen en laat de
+          andere labels ongemarkeerd. Je kunt zoveel labels aanvinken als je
+          wilt, maar kies minimaal één label; uit welke categorie maakt niet
+          uit.
+        </span>
       </h1>
     </div>
     <!-- buttons -->
@@ -86,7 +99,7 @@ import { onKeyStroke } from "@vueuse/core";
 import labels from "@/data/labels.yml";
 import { storeToRefs } from "pinia";
 import { html } from "@/data/article.md";
-
+const showarticle = ref(true);
 const store = useLabelStore();
 // const selected = ref([]);
 const newlabel = ref("");
@@ -102,6 +115,7 @@ const overlayActive = ref(false);
 // });
 
 function next() {
+  showarticle.value = false;
   overlayActive.value = true;
   setTimeout(async () => {
     await store.next();
@@ -159,8 +173,29 @@ watch(watchPosition, (val) => {
     padding: 2rem 0;
   }
 }
+button.showarticle {
+  padding: 0.5em 1em;
+  background: transparent;
+  text-align: center;
+  width: 100%;
+  color: var(--fg2);
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  display: none;
+  &.visible {
+    display: block;
+  }
+}
 .article {
   border: 0;
+  display: none;
+  @media (min-width: 800px) {
+    display: block;
+  }
+  &.visible {
+    opacity: 1;
+    display: block;
+  }
   .textframe {
     margin: 0rem auto;
     width: 42rem;
@@ -214,7 +249,7 @@ watch(watchPosition, (val) => {
       color: var(--fg2);
       opacity: 0.5;
       display: block;
-      width: 24em;
+      width: 32em;
       max-width: 100%;
       margin: 1em auto 0;
       line-height: 1.2em;
