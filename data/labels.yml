@@ -1,25 +1,25 @@
 negatief: 
   title: "Negatieve labels:"
   options:
-    - beledigend/pestend: Dit betreft bijvoorbeeld racistische, sexistische opmerkingen.
+    - beledigend/pestend: Dit betreft bijvoorbeeld racistische, seksistische opmerkingen.
     - spam: Promotie van een niet gerelateerd product of dienst.
     - trol: Giftige opmerkingen van iemand die bewust probeert te stoken en/of te ontregelen.
     - boos: Algemene uiting van ontevredenheid.
 positief:
   title: "Positieve labels:"
   options:
-    - persoonlijk: Een persoonlijke anecdote of perspectief.
+    - persoonlijk: Een persoonlijke anekdote of perspectief.
     - grappig (bedoeld): Een (poging) tot een humorvolle bijdrage.
     - nieuwsgierig: Het stellen van een gerelateerde vraag.
-    - constructief: Inhoudelijk bijdrage aan de discussie en/of het onderwerp.
-    - oplossingsgericht: Een reactie met het oog om bij te dragen aan 
+    - constructief: Inhoudelijke bijdrage aan de discussie en/of het onderwerp.
+    - oplossingsgericht: Een reactie die zoekt naar de oplossing van een probleem. 
 inhoudelijk:
   title: "Inhoudelijke labels:"
   options: 
-    - wetenschappelijk: Goed onderbouwde argumentatie met directe links en/of referenties naar 'peer reviewed' publikaties.
-    - alternatief perspectief: Een nieuwe of niet veel gezien frisse blik op het onderwerp.
+    - wetenschappelijk: Goed onderbouwde argumentatie met directe links en/of referenties naar 'peer reviewed' publicaties.
+    - alternatief perspectief: Een nieuwe of frisse blik op het onderwerp.
     - complottheorie: Verwijzend naar samenzweringstheorieën.
-    - misleidend: Mis-informatie en andere bewust scheve weergaves van de werkelijkheid.
+    - misleidend: Misinformatie en andere bewust scheve weergaves van de werkelijkheid.
     - ongefundeerd: Niet onderbouwde argumentatie.
     - off-topic: Uitspraken hebben geen relevantie tot het onderwerp.
     - onduidelijk: Het is niet helder wat er wordt gezegd.
@@ -28,4 +28,4 @@ vormelijk:
   options: 
     - slordig geformuleerd: SpreEkd vor zig ;-)
     - goed geformuleerd: Heldere zinnen en toegankelijk woordgebruik.
-    - poëtisch: Interessant geformuleerde zinnen en/of inspirerend woordgebruik.
+    - poëtisch: Inspirerend taalgebruik.
