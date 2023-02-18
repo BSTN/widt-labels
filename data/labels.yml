@@ -6,15 +6,6 @@ negatief:
     - trol: Giftige opmerkingen van iemand die bewust probeert te stoken en/of te ontregelen.
     - boos: Algemene uiting van ontevredenheid.
     - erg slordig geformuleerd: SpreEkd vor zig ;-)
-positief:
-  title: "Positieve labels:"
-  options:
-    - persoonlijk: Een persoonlijke anekdote of perspectief.
-    - grappig (bedoeld): Een (poging) tot een humorvolle bijdrage.
-    - nieuwsgierig: Het stellen van een gerelateerde vraag.
-    - constructief: Inhoudelijke bijdrage aan de discussie en/of het onderwerp.
-    - oplossingsgericht: Een reactie die zoekt naar de oplossing van een probleem. 
-    - erg goed geformuleerd: Heldere zinnen en toegankelijk woordgebruik.
 inhoudelijk:
   title: "Inhoudelijke labels:"
   options: 
@@ -25,3 +16,12 @@ inhoudelijk:
     - ongefundeerd: Niet onderbouwde argumentatie.
     - off-topic: Uitspraken hebben geen relevantie tot het onderwerp.
     - onduidelijk: Het is niet helder wat er wordt gezegd.
+positief:
+  title: "Positieve labels:"
+  options:
+    - persoonlijk: Een persoonlijke anekdote of perspectief.
+    - grappig (bedoeld): Een (poging) tot een humorvolle bijdrage.
+    - nieuwsgierig: Het stellen van een gerelateerde vraag.
+    - constructief: Inhoudelijke bijdrage aan de discussie en/of het onderwerp.
+    - oplossingsgericht: Een reactie die zoekt naar de oplossing van een probleem. 
+    - erg goed geformuleerd: Heldere zinnen en toegankelijk woordgebruik.

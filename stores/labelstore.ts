@@ -22,14 +22,37 @@ export const useLabelStore = defineStore('labelstore', {
   },
 
   actions: {
+    async load () {
+      const labels = localStorage.getItem('labels')
+      // check if empty
+      if (!labels) { return false }
+      // parse
+      const {userid, position} = JSON.parse(labels)
+      if (userid && typeof position === 'number') {
+        this.userid = userid
+        this.position = position
+      }
+    },
+    reset () {
+      const sure = confirm('Weet je zeker dat je deze sessie wilt afbreken en helemaal opnieuw wilt beginnen?')
+      if (sure) {
+        localStorage.clear()
+        this.position = 0
+        this.labels = []
+        this.customlabels = []
+        this.userid = false
+        this.$router.push('/')
+      }
+    },
+    store () {
+      const position = this.position
+      const userid = this.userid
+      localStorage.setItem('labels', JSON.stringify({position, userid}))
+    },
     start() {
       this.userid = uid()
       this.$router.push('/test')
     },
-    // prev() {
-    //   if ( this.position === 0 ) return false
-    //   this.position--
-    // },
     async next() {
       const data = {
         position: this.position,
@@ -45,11 +68,13 @@ export const useLabelStore = defineStore('labelstore', {
       }).catch(err => {
         console.warn(err)
       });
+      
       // check if it has a result
       if (!result) { return false } // if not, nothing happens
 
       // go to end
       if (this.position === (comments.length - 1)) {
+        localStorage.clear();
         this.$router.push('/klaar')
         return false
       }
@@ -58,6 +83,8 @@ export const useLabelStore = defineStore('labelstore', {
       this.labels = []
       this.customlabels = []
       this.position++
+      // store
+      this.store()
     }
   },
 

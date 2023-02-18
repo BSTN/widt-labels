@@ -1,5 +1,5 @@
 <template>
-  <div class="reactie">
+  <div class="reactie" v-if="loaded">
     <div class="overlay" :class="{ active: overlayActive }">
       <div class="position">
         <span>{{ store.position + 1 }} / {{ store.length + 1 }}</span>
@@ -92,6 +92,9 @@
       <!-- <button @click="store.prev()">vorige</button> -->
       <button @click="next()" class="next">volgende</button>
     </div>
+    <button class="reset negatief" @click="store.reset()">
+      reset
+    </button>
   </div>
 </template>
 <script lang="ts" setup>
@@ -101,6 +104,7 @@ import { storeToRefs } from "pinia";
 import { html } from "@/data/article.md";
 const showarticle = ref(true);
 const store = useLabelStore();
+const loaded = ref(false)
 // const selected = ref([]);
 const newlabel = ref("");
 // const suggestions = ref([]);
@@ -157,6 +161,10 @@ watch(watchPosition, (val) => {
     window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
   }, 500);
 });
+onMounted(async () => {
+  await store.load()
+  loaded.value = true
+})
 </script>
 <style lang="less" scoped>
 .reactie {
@@ -186,7 +194,7 @@ button.showarticle {
     display: block;
   }
   @media (min-width: 800px) {
-    display: none;
+    display: none !important;
   }
 }
 .article {
@@ -204,13 +212,6 @@ button.showarticle {
     width: 42rem;
     max-width: calc(100% - 1rem);
     color: var(--fg2);
-    :deep(h1) {
-      color: var(--fg);
-      text-align: center;
-      width: 30rem;
-      margin: 0 auto 1.5rem;
-      max-width: 100%;
-    }
   }
 }
 .overlay {
@@ -467,7 +468,10 @@ button.selection {
     }
   }
   input {
-    max-width: 12rem;
+    // width: 12rem;
+    flex-shrink: 1;
+    flex-grow: 1;
+    // max-width: calc(1÷00%;
     font-size: 0.8rem;
     border: 0.125em solid var(--bg);
     border-radius: 0.5em 0 0 0.5em;
@@ -491,6 +495,20 @@ button.selection {
   }
   span {
     margin: 0 1em;
+  }
+}
+
+.reset {
+  background: var(--bg1);
+  width: 5rem;
+  display: block;
+  margin: 4rem auto 1rem;
+  text-align: center;
+  padding: 0.25em;
+  font-size: 0.8rem;
+  color: var(--fg2);
+  &:hover {
+    background: var(--bbg);
   }
 }
 </style>
