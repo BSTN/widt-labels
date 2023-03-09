@@ -54,6 +54,9 @@ export const useLabelStore = defineStore('labelstore', {
       this.$router.push('/test')
     },
     async next() {
+      if (this.labels.length < 1 && this.customlabels.length < 1) {
+        throw(new Error('no labels defined'))
+      } 
       const data = {
         position: this.position,
         reactie: this.current,

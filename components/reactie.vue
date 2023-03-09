@@ -31,15 +31,14 @@
         <span>
           Kies alleen de labels die je er goed bij vindt passen en laat de
           andere labels ongemarkeerd. Je kunt zoveel labels aanvinken als je
-          wilt, maar kies minimaal één label; uit welke categorie maakt niet
-          uit.
+          wilt, maar kies minimaal één label;
         </span>
       </h1>
     </div>
     <!-- buttons -->
     <div class="buttons">
       <div class="groep" :class="k" v-for="(v, k) in labels" :key="k">
-        <label>{{ v.title }}</label>
+        <!-- <label>{{ v.title }}</label> -->
         <button
           v-for="option in v.options"
           :key="option"
@@ -122,7 +121,9 @@ function next() {
   showarticle.value = false;
   overlayActive.value = true;
   setTimeout(async () => {
-    await store.next();
+    await store.next().catch(err => {
+      overlayActive.value = false
+    });
   }, 500);
 }
 

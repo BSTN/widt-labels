@@ -2,14 +2,14 @@ negatief:
   title: "Negatieve labels:"
   options:
     - beledigend/pestend: Dit betreft bijvoorbeeld racistische, seksistische opmerkingen.
-    - spam: Promotie van een niet gerelateerd product of dienst.
+    - spam: Reclame van een niet gerelateerd product of dienst.
     - trol: Giftige opmerkingen van iemand die bewust probeert te stoken en/of te ontregelen.
     - boos: Algemene uiting van ontevredenheid.
     - erg slordig geformuleerd: SpreEkd vor zig ;-)
 inhoudelijk:
   title: "Inhoudelijke labels:"
   options: 
-    - goed onderbouwd: Heldere argumentatie met traceerbare referenties naar ander onderzoek.
+    - goed onderbouwd: Heldere argumentatie en/of verwijzing naar ander onderzoek.
     - alternatief perspectief: Een nieuwe of frisse blik op het onderwerp.
     - complottheorie: Verwijzend naar samenzweringstheorieën.
     - misleidend: Misinformatie en andere bewust scheve weergaves van de werkelijkheid.
