@@ -1,5 +1,15 @@
-version: "3.9"
+version: "3"
 services:
+  nginx:
+    image: nginx
+    container_name: nginx
+    tty: true
+    ports:
+      - 8000:80
+    volumes:
+      - ./nginxconfig/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - traefik-public
   frontend:
     image: node:19.1.0-alpine
     working_dir: /app
@@ -11,21 +21,23 @@ services:
       - type: bind
         source: "."
         target: /app
+    networks:
+      - traefik-public
   backend:
     image: node:19.1.0-alpine
     working_dir: /app
     command: sh -c "yarn install && yarn run dev"
     networks: 
-      - widt-backend
+      - traefik-public
     ports:
       - "4445:4445"
-    environment:
-      - MYSQL_USER=${MYSQL_USER}
-      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes: 
       - type: bind
         source: ./api/
         target: /app
+    environment: 
+       MYSQL_USER: ${MYSQL_USER}
+       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
   db:
     image: mariadb
     restart: on-failure
@@ -36,9 +48,9 @@ services:
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     networks: 
-      - widt-backend
+      - traefik-public
     volumes: 
-      - ${PWD}/mariadb:/var/lib/mysql
+      - ./mariadb:/var/lib/mysql
     ports:
       - 3306:3306
   adminer:
@@ -47,8 +59,7 @@ services:
     ports: 
       - 4446:8080
     networks:
-      - widt-backend
-
+      - traefik-public
 networks:
-  widt-backend:
-    driver: bridge
+ traefik-public:
+    name: traefik-public
