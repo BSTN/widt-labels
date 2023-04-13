@@ -72,6 +72,11 @@ app.all('/', async (req, res, next) => {
   res.send({ 'ok': 'thank you.' })
 })
 
+app.all('/results', async (req, res, next) => {
+  const all = await LABEL.findAll()
+  res.send(all)
+})
+
 app.listen(port, () => {
   console.log(`API is running on port ${port}`)
 })
